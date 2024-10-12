@@ -1,11 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Alert, Button, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
+
+  const finalizar = () => {
+    Alert.alert("Finalizar", "SU SESION HA FINALIZADO")
+  }
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>Botones</Text>
       <StatusBar style="auto" />
+      <Button
+        title='FINALIZAR'
+        onPress={finalizar}
+      />
+      <Button
+        title='INICIAR'
+        onPress={() => {
+          Alert.alert("Iniciar", "SU SESION HA INICIADO")
+        }}
+      />
     </View>
   );
 }
