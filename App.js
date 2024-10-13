@@ -1,23 +1,30 @@
 import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
 import { Alert, Button, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
-
-  const finalizar = () => {
-    Alert.alert("Finalizar", "SU SESION HA FINALIZADO")
+  const [vidas, setVidas] = useState(5)
+  const gameOver = () => {
+    Alert.alert("ADVERTENCIA", "GAME OVER")
   }
   return (
     <View style={styles.container}>
-      <Text>Botones</Text>
+      <Text>Vidas: {vidas}</Text>
       <StatusBar style="auto" />
       <Button
-        title='FINALIZAR'
-        onPress={finalizar}
+        title='PERDER VIDA'
+        onPress={() => {
+          if(vidas > 0){
+            setVidas(vidas - 1)
+          } else {
+            gameOver()
+          }
+        }}
       />
       <Button
-        title='INICIAR'
+        title='PREMIAR'
         onPress={() => {
-          Alert.alert("Iniciar", "SU SESION HA INICIADO")
+          setVidas(vidas + 3)
         }}
       />
     </View>
